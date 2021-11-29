@@ -17,7 +17,7 @@ vec_t *vec_new_with_capacity(int capacity);
 // Frees the memory allocated to the vector.
 void vec_free(vec_t *v);
 
-void vec_size(vec_t *v);
+int vec_size(vec_t *v);
 
 void *vec_get(vec_t *v, int index);
 

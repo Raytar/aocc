@@ -42,7 +42,7 @@ void vec_free(vec_t *v)
 	free(v);
 }
 
-void vec_size(vec_t *v)
+int vec_size(vec_t *v)
 {
 	return v->size;
 }
@@ -103,6 +103,10 @@ void vec_push_back(vec_t *v, void *item)
 
 void *vec_pop_back(vec_t *v)
 {
+	if (v->size < 1)
+	{
+		return NULL;
+	}
 	void *item = v->data[v->size - 1];
 	v->size--;
 	return item;

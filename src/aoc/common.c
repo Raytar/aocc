@@ -15,7 +15,7 @@ void _panicf(const char *file, int line, const char *format, ...)
 	va_list args;
 	va_start(args, format);
 
-	fprintf(stderr, "panic (%s:%d): ", file);
+	fprintf(stderr, "panic (%s:%d): ", file, line);
 	vfprintf(stderr, format, args);
 
 	va_end(args);
