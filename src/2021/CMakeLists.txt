@@ -2,6 +2,8 @@ add_library(2021 STATIC
 	2021.h
 	2021.c
 	solutions.h
+	datastructures.c
+	datastructures.h
 	day1.c
 )
 

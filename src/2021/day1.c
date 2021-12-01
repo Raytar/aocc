@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <aoc/vec.h>
 
 #include "solutions.h"
+#include "datastructures.h"
 
 int64_t day1_part1(input_t input)
 {
@@ -35,7 +35,7 @@ int64_t day1_part2(input_t input)
 	size_t buf_len = 0;
 
 	// FIXME: a queue can be used instead, but I don't want to implement one right now
-	vec_t *history = vec_new();
+	vec_int64_t *history = vec_int64_new();
 	int window_start = 0;
 	int64_t num_increased = 0;
 	int64_t prev_value = -1;
@@ -46,15 +46,14 @@ int64_t day1_part2(input_t input)
 		if (!sscanf(line, "%ld", &num))
 			panic("expected a number");
 
-		// FIXME: this only works on machines where the pointer size is 64 bits
-		vec_push_back(history, (void *)num);
+		vec_int64_push_back(history, num);
 
 		int64_t sum = 0;
-		if (vec_size(history) >= 3)
+		if (vec_int64_size(history) >= 3)
 		{
-			sum += (int64_t)vec_get(history, window_start);
-			sum += (int64_t)vec_get(history, window_start + 1);
-			sum += (int64_t)vec_get(history, window_start + 2);
+			sum += vec_int64_get(history, window_start);
+			sum += vec_int64_get(history, window_start + 1);
+			sum += vec_int64_get(history, window_start + 2);
 			window_start++;
 		}
 
@@ -64,7 +63,7 @@ int64_t day1_part2(input_t input)
 		prev_value = sum;
 	}
 
-	vec_free(history);
+	vec_int64_free(history);
 
 	if (line != NULL)
 		free(line);

@@ -14,7 +14,7 @@ static ssize_t str_getline(char **lineptr, size_t *n, const char **str)
 	const char *cur_line = *str;
 	const char *next_line = strchr(cur_line, '\n'); // returns pointer to '\n', or NULL.
 	next_line = next_line ? next_line + 1 : NULL;	// but we want the pointer to the next line following the terminator
-	size_t len = next_line ? (next_line - cur_line) : strlen(cur_line);
+	size_t len = next_line ? (size_t)(next_line - cur_line) : strlen(cur_line);
 	if (*n < len + 1)
 	{
 		if (*lineptr == NULL)
