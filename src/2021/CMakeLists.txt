@@ -1,0 +1,10 @@
+add_library(2021 STATIC
+	2021.h
+	2021.c
+	solutions.h
+	day1.c
+)
+
+target_link_libraries(2021 aoc)
+
+target_include_directories(2021 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
