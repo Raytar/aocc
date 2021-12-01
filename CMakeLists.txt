@@ -2,6 +2,9 @@ project("Advent of Code" C)
 
 cmake_minimum_required(VERSION 3.18)
 
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
 set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
