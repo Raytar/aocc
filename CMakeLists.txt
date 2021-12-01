@@ -7,7 +7,7 @@ set(CMAKE_C_OUTPUT_EXTENSION_REPLACE 1)
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 
 if ( CMAKE_COMPILER_IS_GNUCC )
-	set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Wall -Wextra")
+	set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic")
 endif()
 if ( MSVC )
 	set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} /W4")

@@ -1,3 +1,5 @@
+#include <inttypes.h>
+
 #include "2021.h"
 #include "solutions.h"
 
@@ -14,5 +16,5 @@ void aoc_2021_run_solution(int day, int part, FILE *fp)
 
 	input_t input = input_new_from_file(fp);
 	int64_t result = solutions[index](input);
-	printf("day %d part %d: solution is %ld\n", day, part, result);
+	printf("day %d part %d: solution is %" PRIi64 "\n", day, part, result);
 }
