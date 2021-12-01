@@ -5,6 +5,8 @@ add_library(aoc STATIC
 	vec.h
 	input.c
 	input.h
+	queue.c
+	queue.h
 )
 
 target_include_directories(aoc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)

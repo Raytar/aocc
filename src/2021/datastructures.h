@@ -2,8 +2,8 @@
 #define DATASTRUCTURES_H
 
 #include <stdint.h>
-#include <aoc/vec.h>
+#include <aoc/queue.h>
 
-VEC_DECLARE_TYPE_NAME(int64_t, int64)
+QUEUE_DECLARE_TYPE_NAME(int64_t, int64)
 
 #endif // DATASTRUCTURES_H

@@ -17,6 +17,7 @@ noreturn void aoc_panicf(const char *file, int line, const char *format, ...)
 
 	fprintf(stderr, "panic (%s:%d): ", file, line);
 	vfprintf(stderr, format, args);
+	fputs("\n", stderr);
 
 	va_end(args);
 

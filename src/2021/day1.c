@@ -34,9 +34,7 @@ int64_t day1_part2(input_t input)
 	char *line = NULL;
 	size_t buf_len = 0;
 
-	// FIXME: a queue can be used instead, but I don't want to implement one right now
-	vec_int64_t *history = vec_int64_new();
-	int window_start = 0;
+	queue_int64_t *history = queue_int64_new(3);
 	int64_t num_increased = 0;
 	int64_t prev_value = -1;
 
@@ -46,15 +44,18 @@ int64_t day1_part2(input_t input)
 		if (!sscanf(line, "%ld", &num))
 			panic("expected a number");
 
-		vec_int64_push_back(history, num);
+		// enqueue the new item
+		queue_int64_enqueue(history, num);
 
 		int64_t sum = 0;
-		if (vec_int64_size(history) >= 3)
+		if (queue_int64_len(history) == 3)
 		{
-			sum += vec_int64_get(history, window_start);
-			sum += vec_int64_get(history, window_start + 1);
-			sum += vec_int64_get(history, window_start + 2);
-			window_start++;
+			sum += queue_int64_get(history, 0);
+			sum += queue_int64_get(history, 1);
+			sum += queue_int64_get(history, 2);
+
+			// remove oldest item
+			queue_int64_dequeue(history);
 		}
 
 		if (prev_value > 0 && sum > prev_value)
@@ -63,7 +64,7 @@ int64_t day1_part2(input_t input)
 		prev_value = sum;
 	}
 
-	vec_int64_free(history);
+	queue_int64_free(history);
 
 	if (line != NULL)
 		free(line);
