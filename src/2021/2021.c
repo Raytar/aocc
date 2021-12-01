@@ -6,7 +6,7 @@ solution_t solutions[] = {
 	day1_part2,
 };
 
-void _2021_run_solution(int day, int part, FILE *fp)
+void aoc_2021_run_solution(int day, int part, FILE *fp)
 {
 	int index = (day - 1) * 2 + (part - 1);
 	if (index >= (int)(sizeof(solutions) / sizeof(solution_t)))

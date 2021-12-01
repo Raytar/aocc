@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
 	if (strcmp(argv[1], "2021") == 0)
 	{
-		_2021_run_solution(day, part, fp);
+		aoc_2021_run_solution(day, part, fp);
 	}
 
 	fclose(fp);

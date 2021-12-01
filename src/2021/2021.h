@@ -1,8 +1,8 @@
-#ifndef _2021_H
-#define _2021_H
+#ifndef AOC_2021_H
+#define AOC_2021_H
 
 #include <stdio.h>
 
-void _2021_run_solution(int day, int part, FILE *fp);
+void aoc_2021_run_solution(int day, int part, FILE *fp);
 
-#endif // _2021_H
+#endif // AOC_2021_H

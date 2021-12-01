@@ -14,22 +14,22 @@ static void bounds_check(int size, int index)
 	}
 }
 
-static void grow_capacity(vec_t *v, int needed_capacity)
+static void grow_capacity(vec_unsafe_t *v, int needed_capacity)
 {
 	if (v->capacity < needed_capacity)
 	{
-		_vec_ensure_capacity(v, needed_capacity + v->capacity / 2);
+		vec_unsafe_ensure_capacity(v, needed_capacity + v->capacity / 2);
 	}
 }
 
-vec_t *_vec_new(size_t item_size)
+vec_unsafe_t *vec_unsafe_new(size_t item_size)
 {
-	return _vec_new_with_capacity(item_size, INITIAL_CAPACITY);
+	return vec_unsafe_new_with_capacity(item_size, INITIAL_CAPACITY);
 }
 
-vec_t *_vec_new_with_capacity(size_t item_size, int capacity)
+vec_unsafe_t *vec_unsafe_new_with_capacity(size_t item_size, int capacity)
 {
-	vec_t *v = malloc(sizeof(vec_t));
+	vec_unsafe_t *v = malloc(sizeof(vec_unsafe_t));
 	v->capacity = capacity;
 	v->size = 0;
 	v->item_size = item_size;
@@ -37,28 +37,28 @@ vec_t *_vec_new_with_capacity(size_t item_size, int capacity)
 	return v;
 }
 
-void _vec_free(vec_t *v)
+void vec_unsafe_free(vec_unsafe_t *v)
 {
 	free(v->data);
 	free(v);
 }
 
-int _vec_size(vec_t *v)
+int vec_unsafe_size(vec_unsafe_t *v)
 {
 	return v->size;
 }
 
-int _vec_index(vec_t *v, int index)
+int vec_unsafe_index(vec_unsafe_t *v, int index)
 {
 	bounds_check(v->size, index);
 	return index;
 }
 
-int _vec_insert(vec_t *v, int index)
+int vec_unsafe_insert(vec_unsafe_t *v, int index)
 {
 	// permit the vec to grow by one item
 	bounds_check(v->size + 1, index);
-	_vec_ensure_capacity(v, v->size + 1);
+	vec_unsafe_ensure_capacity(v, v->size + 1);
 
 	if (index < v->size)
 	{
@@ -69,7 +69,7 @@ int _vec_insert(vec_t *v, int index)
 	return index;
 }
 
-void _vec_remove(vec_t *v, int index)
+void vec_unsafe_remove(vec_unsafe_t *v, int index)
 {
 	bounds_check(v->size, index);
 
@@ -80,12 +80,12 @@ void _vec_remove(vec_t *v, int index)
 	v->size--;
 }
 
-void _vec_clear(vec_t *v)
+void vec_unsafe_clear(vec_unsafe_t *v)
 {
 	v->size = 0;
 }
 
-int _vec_push_back(vec_t *v)
+int vec_unsafe_push_back(vec_unsafe_t *v)
 {
 	grow_capacity(v, v->size + 1);
 	int index = v->size;
@@ -93,7 +93,7 @@ int _vec_push_back(vec_t *v)
 	return index;
 }
 
-void _vec_pop_back(vec_t *v)
+void vec_unsafe_pop_back(vec_unsafe_t *v)
 {
 	if (v->size < 1)
 	{
@@ -102,7 +102,7 @@ void _vec_pop_back(vec_t *v)
 	v->size--;
 }
 
-void _vec_ensure_capacity(vec_t *v, int capacity)
+void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity)
 {
 	if (v->capacity < capacity)
 	{
