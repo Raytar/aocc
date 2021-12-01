@@ -9,12 +9,12 @@
 // function pointer type for AoC solutions
 typedef int64_t (*solution_t)(input_t);
 
-#define panic(message) _panic(__FILE__, __LINE__, message)
+#define panic(message) aoc_panic(__FILE__, __LINE__, message)
 
-noreturn void _panic(const char *file, int line, const char *message);
+noreturn void aoc_panic(const char *file, int line, const char *message);
 
-#define panicf(format, ...) _panicf(__FILE__, __LINE__, format, __VA_ARGS__)
+#define panicf(format, ...) aoc_panicf(__FILE__, __LINE__, format, __VA_ARGS__)
 
-noreturn void _panicf(const char *file, int line, const char *format, ...);
+noreturn void aoc_panicf(const char *file, int line, const char *format, ...);
 
 #endif // COMMON_H
