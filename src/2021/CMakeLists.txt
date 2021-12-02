@@ -5,6 +5,7 @@ add_library(2021 STATIC
 	datastructures.c
 	datastructures.h
 	day1.c
+	day2.c
 )
 
 target_link_libraries(2021 aoc)
