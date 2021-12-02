@@ -1,4 +1,6 @@
-#include <stdlib.h>
+#include <stdio.h>	// sscanf
+#include <stdlib.h> // free
+#include <inttypes.h>
 
 #include "solutions.h"
 #include "datastructures.h"
@@ -14,7 +16,7 @@ int64_t day1_part1(input_t input)
 	while (input_getline(&line, &buf_len, &input) != -1)
 	{
 		int64_t num;
-		if (!sscanf(line, "%ld", &num))
+		if (!sscanf(line, "%" SCNi64, &num))
 			panic("expected a number");
 
 		if (prev_value > 0 && num > prev_value)
@@ -41,7 +43,7 @@ int64_t day1_part2(input_t input)
 	while (input_getline(&line, &buf_len, &input) != -1)
 	{
 		int64_t num;
-		if (!sscanf(line, "%ld", &num))
+		if (!sscanf(line, "%" SCNi64, &num))
 			panic("expected a number");
 
 		// enqueue the new item

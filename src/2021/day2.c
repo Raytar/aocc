@@ -1,3 +1,4 @@
+#include <stdio.h>	// sscanf
 #include <stdlib.h> // free
 #include <string.h> // strchr
 
