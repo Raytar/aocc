@@ -4,7 +4,7 @@
 #include "common.h"
 #include "vec.h"
 
-const int INITIAL_CAPACITY = 100;
+const int VEC_INITIAL_CAPACITY = 100;
 
 static void bounds_check(int size, int index)
 {
@@ -24,7 +24,7 @@ static void grow_capacity(vec_unsafe_t *v, int needed_capacity)
 
 vec_unsafe_t *vec_unsafe_new(size_t item_size)
 {
-	return vec_unsafe_new_with_capacity(item_size, INITIAL_CAPACITY);
+	return vec_unsafe_new_with_capacity(item_size, VEC_INITIAL_CAPACITY);
 }
 
 vec_unsafe_t *vec_unsafe_new_with_capacity(size_t item_size, int capacity)

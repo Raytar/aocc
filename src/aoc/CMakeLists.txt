@@ -7,6 +7,8 @@ add_library(aoc STATIC
 	input.h
 	queue.c
 	queue.h
+	hashmap.c
+	hashmap.h
 )
 
 target_include_directories(aoc PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
