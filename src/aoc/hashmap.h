@@ -1,7 +1,6 @@
 #ifndef HASHMAP_H
 #define HASHMAP_H
 
-#include <stdio.h>
 #include <stdlib.h> // calloc, size_t
 #include <stdbool.h>
 
@@ -130,7 +129,6 @@ size_t hash_str(const char *str);
 	bool hashmap_##NAME##_get(hashmap_##NAME##_t *map, KEY key, VALUE *value)                                   \
 	{                                                                                                           \
 		int index = hashmap_##NAME##_index_for(map, key);                                                       \
-		printf("get index %d\n", index);                                                                        \
 		if (index == -1)                                                                                        \
 			return false;                                                                                       \
 		*value = map->entries[index].value;                                                                     \
@@ -139,7 +137,6 @@ size_t hash_str(const char *str);
 	bool hashmap_##NAME##_remove(hashmap_##NAME##_t *map, KEY key, KEY *old_key, VALUE *value)                  \
 	{                                                                                                           \
 		int index = hashmap_##NAME##_index_for(map, key);                                                       \
-		printf("remove index %d\n", index);                                                                     \
 		if (index == -1)                                                                                        \
 			return false;                                                                                       \
 		hashmap_##NAME##_entry_t *entry = &map->entries[index];                                                 \
