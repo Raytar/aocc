@@ -38,28 +38,35 @@ void vec_unsafe_pop_back(vec_unsafe_t *v);
 
 void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity);
 
+void vec_unsafe_set_size(vec_unsafe_t *v, int size);
+
+vec_unsafe_t *vec_unsafe_clone(vec_unsafe_t *v);
+
 #define VEC_DECLARE_TYPE(TYPE) VEC_DECLARE_TYPE_NAME(TYPE, TYPE)
 
-#define VEC_DECLARE_TYPE_NAME(TYPE, NAME)                                \
-	typedef struct vec_##NAME##_t                                        \
-	{                                                                    \
-		int capacity;                                                    \
-		int size;                                                        \
-		size_t item_size;                                                \
-		TYPE *data;                                                      \
-	} vec_##NAME##_t;                                                    \
-	vec_##NAME##_t *vec_##NAME##_new();                                  \
-	vec_##NAME##_t *vec_##NAME##_new_with_capacity(int capacity);        \
-	void vec_##NAME##_free(vec_##NAME##_t *vec);                         \
-	void vec_##NAME##_clear(vec_##NAME##_t *vec);                        \
-	size_t vec_##NAME##_size(vec_##NAME##_t *vec);                       \
-	TYPE vec_##NAME##_get(vec_##NAME##_t *vec, int index);               \
-	TYPE vec_##NAME##_set(vec_##NAME##_t *vec, int index, TYPE item);    \
-	void vec_##NAME##_insert(vec_##NAME##_t *vec, int index, TYPE item); \
-	TYPE vec_##NAME##_remove(vec_##NAME##_t *vec, int index);            \
-	void vec_##NAME##_push_back(vec_##NAME##_t *vec, TYPE item);         \
-	TYPE vec_##NAME##_pop_back(vec_##NAME##_t *vec);                     \
-	void vec_##NAME##_ensure_capacity(vec_##NAME##_t *vec, int capacity);
+#define VEC_DECLARE_TYPE_NAME(TYPE, NAME)                                 \
+	typedef struct vec_##NAME##_t                                         \
+	{                                                                     \
+		int capacity;                                                     \
+		int size;                                                         \
+		size_t item_size;                                                 \
+		TYPE *data;                                                       \
+	} vec_##NAME##_t;                                                     \
+	vec_##NAME##_t *vec_##NAME##_new();                                   \
+	vec_##NAME##_t *vec_##NAME##_new_with_capacity(int capacity);         \
+	void vec_##NAME##_free(vec_##NAME##_t *vec);                          \
+	void vec_##NAME##_clear(vec_##NAME##_t *vec);                         \
+	size_t vec_##NAME##_size(vec_##NAME##_t *vec);                        \
+	TYPE vec_##NAME##_get(vec_##NAME##_t *vec, int index);                \
+	TYPE *vec_##NAME##_get_ptr(vec_##NAME##_t *vec, int index);           \
+	TYPE vec_##NAME##_set(vec_##NAME##_t *vec, int index, TYPE item);     \
+	void vec_##NAME##_insert(vec_##NAME##_t *vec, int index, TYPE item);  \
+	TYPE vec_##NAME##_remove(vec_##NAME##_t *vec, int index);             \
+	void vec_##NAME##_push_back(vec_##NAME##_t *vec, TYPE item);          \
+	TYPE vec_##NAME##_pop_back(vec_##NAME##_t *vec);                      \
+	void vec_##NAME##_ensure_capacity(vec_##NAME##_t *vec, int capacity); \
+	void vec_##NAME##_set_size(vec_##NAME##_t *vec, int size);            \
+	vec_##NAME##_t *vec_##NAME##_clone(vec_##NAME##_t *vec);
 
 #define VEC_IMPL_TYPE(TYPE) VEC_IMPL_TYPE_NAME(TYPE, TYPE)
 
@@ -87,6 +94,10 @@ void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity);
 	TYPE vec_##NAME##_get(vec_##NAME##_t *vec, int index)                              \
 	{                                                                                  \
 		return vec->data[vec_unsafe_index((vec_unsafe_t *)vec, index)];                \
+	}                                                                                  \
+	TYPE *vec_##NAME##_get_ptr(vec_##NAME##_t *vec, int index)                         \
+	{                                                                                  \
+		return &vec->data[vec_unsafe_index((vec_unsafe_t *)vec, index)];               \
 	}                                                                                  \
 	TYPE vec_##NAME##_set(vec_##NAME##_t *vec, int index, TYPE item)                   \
 	{                                                                                  \
@@ -123,6 +134,14 @@ void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity);
 	void vec_##NAME##_ensure_capacity(vec_##NAME##_t *vec, int capacity)               \
 	{                                                                                  \
 		vec_unsafe_ensure_capacity((vec_unsafe_t *)vec, capacity);                     \
+	}                                                                                  \
+	void vec_##NAME##_set_size(vec_##NAME##_t *vec, int size)                          \
+	{                                                                                  \
+		vec_unsafe_set_size((vec_unsafe_t *)vec, size);                                \
+	}                                                                                  \
+	vec_##NAME##_t *vec_##NAME##_clone(vec_##NAME##_t *vec)                            \
+	{                                                                                  \
+		return (vec_##NAME##_t *)vec_unsafe_clone((vec_unsafe_t *)vec);                \
 	}
 
 #endif // VEC_H

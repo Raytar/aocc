@@ -110,3 +110,20 @@ void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity)
 		v->capacity = capacity;
 	}
 }
+
+void vec_unsafe_set_size(vec_unsafe_t *v, int size)
+{
+	vec_unsafe_ensure_capacity(v, size);
+	// zero out new items
+	if (size > v->size)
+		memset(v->data + (v->size * v->item_size), 0, (size - v->size) * v->item_size);
+	v->size = size;
+}
+
+vec_unsafe_t *vec_unsafe_clone(vec_unsafe_t *v)
+{
+	vec_unsafe_t *new_v = vec_unsafe_new_with_capacity(v->item_size, v->size);
+	vec_unsafe_set_size(new_v, v->size);
+	memcpy(new_v->data, v->data, v->size * v->item_size);
+	return new_v;
+}
