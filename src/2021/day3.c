@@ -134,6 +134,7 @@ int64_t day3_part2(input_t input)
 			filter_numbers(oxygen_numbers, bit_number, 0);
 
 		vec_bit_free(oxygen_bits);
+		// TODO: no need to count all the bits again
 		oxygen_bits = count_bits(oxygen_numbers, num_bits);
 
 		struct bit co2_bit = vec_bit_get(co2_bits, i);
