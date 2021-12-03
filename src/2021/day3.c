@@ -128,23 +128,19 @@ int64_t day3_part2(input_t input)
 		int bit_number = num_bits - i - 1;
 
 		struct bit oxygen_bit = vec_bit_get(oxygen_bits, i);
-		if (oxygen_bit.ones > oxygen_bit.zeros)
+		if (oxygen_bit.ones >= oxygen_bit.zeros)
 			filter_numbers(oxygen_numbers, bit_number, 1);
-		else if (oxygen_bit.ones < oxygen_bit.zeros)
-			filter_numbers(oxygen_numbers, bit_number, 0);
 		else
-			filter_numbers(oxygen_numbers, bit_number, 1);
+			filter_numbers(oxygen_numbers, bit_number, 0);
 
 		vec_bit_free(oxygen_bits);
 		oxygen_bits = count_bits(oxygen_numbers, num_bits);
 
 		struct bit co2_bit = vec_bit_get(co2_bits, i);
-		if (co2_bit.ones > co2_bit.zeros)
+		if (co2_bit.ones >= co2_bit.zeros)
 			filter_numbers(co2_numbers, bit_number, 0);
-		else if (co2_bit.ones < co2_bit.zeros)
-			filter_numbers(co2_numbers, bit_number, 1);
 		else
-			filter_numbers(co2_numbers, bit_number, 0);
+			filter_numbers(co2_numbers, bit_number, 1);
 
 		vec_bit_free(co2_bits);
 		co2_bits = count_bits(co2_numbers, num_bits);
