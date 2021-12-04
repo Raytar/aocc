@@ -16,7 +16,7 @@ VEC_IMPL_TYPE_NAME(struct bit, bit)
 VEC_DECLARE_TYPE(short)
 VEC_IMPL_TYPE(short)
 
-vec_short_t *read_input(input_t input, size_t *num_bits)
+static vec_short_t *read_input(input_t input, size_t *num_bits)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
