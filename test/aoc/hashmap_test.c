@@ -20,7 +20,7 @@ void tearDown()
 
 void test_hashmap_insert_and_get()
 {
-	hashmap_str_str_insert(&m, "hello", "world", NULL, NULL);
+	hashmap_str_str_insert(&m, "hello", "world");
 	char *value;
 	TEST_ASSERT(hashmap_str_str_get(&m, "hello", &value));
 	TEST_ASSERT_EQUAL_STRING("world", value);
@@ -28,11 +28,11 @@ void test_hashmap_insert_and_get()
 
 void test_hashmap_rehash()
 {
-	hashmap_str_str_insert(&m, "1", "1", NULL, NULL);
-	hashmap_str_str_insert(&m, "2", "2", NULL, NULL);
-	hashmap_str_str_insert(&m, "3", "3", NULL, NULL);
-	hashmap_str_str_insert(&m, "4", "4", NULL, NULL);
-	hashmap_str_str_insert(&m, "5", "5", NULL, NULL);
+	hashmap_str_str_insert(&m, "1", "1");
+	hashmap_str_str_insert(&m, "2", "2");
+	hashmap_str_str_insert(&m, "3", "3");
+	hashmap_str_str_insert(&m, "4", "4");
+	hashmap_str_str_insert(&m, "5", "5");
 
 	char *value;
 	TEST_ASSERT(hashmap_str_str_get(&m, "1", &value));
@@ -49,10 +49,10 @@ void test_hashmap_rehash()
 
 void test_hashmap_remove()
 {
-	hashmap_str_str_insert(&m, "1", "1", NULL, NULL);
+	hashmap_str_str_insert(&m, "1", "1");
 
 	char *value;
-	TEST_ASSERT(hashmap_str_str_remove(&m, "1", NULL, &value));
+	TEST_ASSERT(hashmap_str_str_remove(&m, "1", &value));
 	TEST_ASSERT_EQUAL_STRING("1", value);
 	TEST_ASSERT_FALSE(hashmap_str_str_get(&m, "1", &value));
 }

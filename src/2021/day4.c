@@ -121,7 +121,7 @@ static void read_input(input_t input, vec_int8_t *numbers, vec_bingo_t *bingos)
 				panic("expected a u8");
 			uint8_t index = row_number * BINGO_LEN + col_number;
 			bingo.board[index] = number;
-			hashmap_bingo_lookup_insert(&bingo.lookup, number, index, NULL, NULL);
+			hashmap_bingo_lookup_insert(&bingo.lookup, number, index);
 			col_number++;
 			token = strtok(NULL, " ");
 		}
