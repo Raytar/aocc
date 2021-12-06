@@ -16,14 +16,14 @@ VEC_IMPL_TYPE_NAME(struct bit, bit)
 VEC_DECLARE_TYPE(short)
 VEC_IMPL_TYPE(short)
 
-static vec_short_t *read_input(input_t input, size_t *num_bits)
+static vec_short_t *read_input(FILE *input, size_t *num_bits)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
 
 	vec_short_t *numbers = vec_short_new();
 
-	while (input_getline(&line, &buf_len, &input) != -1)
+	while (getline(&line, &buf_len, input) != -1)
 	{
 		size_t len;
 
@@ -78,7 +78,7 @@ vec_bit_t *count_bits(vec_short_t *numbers, size_t num_bits)
 	return bits;
 }
 
-int64_t day3_part1(input_t input)
+int64_t day3_part1(FILE *input)
 {
 	size_t num_bits = 0;
 	vec_short_t *numbers = read_input(input, &num_bits);
@@ -115,7 +115,7 @@ void filter_numbers(vec_short_t *numbers, int bit, bool value)
 	}
 }
 
-int64_t day3_part2(input_t input)
+int64_t day3_part2(FILE *input)
 {
 	size_t num_bits = 0;
 	vec_short_t *oxygen_numbers = read_input(input, &num_bits);

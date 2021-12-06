@@ -3,8 +3,6 @@ add_library(aoc STATIC
 	common.h
 	vec.c
 	vec.h
-	input.c
-	input.h
 	queue.c
 	queue.h
 	hashmap.c

@@ -75,13 +75,13 @@ static bool bingo_mark(bingo_t *bingo, int8_t number)
 	return false;
 }
 
-static void read_input(input_t input, vec_int8_t *numbers, vec_bingo_t *bingos)
+static void read_input(FILE *input, vec_int8_t *numbers, vec_bingo_t *bingos)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
 
 	// read the first line containing numbers
-	if (input_getline(&line, &buf_len, &input) == -1)
+	if (getline(&line, &buf_len, input) == -1)
 		panic("expected numbers");
 
 	char *token = strtok(line, ",");
@@ -97,7 +97,7 @@ static void read_input(input_t input, vec_int8_t *numbers, vec_bingo_t *bingos)
 
 	uint8_t row_number = 0;
 	bingo_t bingo;
-	while (input_getline(&line, &buf_len, &input) != -1)
+	while (getline(&line, &buf_len, input) != -1)
 	{
 		line[strcspn(line, "\r\n")] = '\0'; // remove newline
 
@@ -161,7 +161,7 @@ static uint64_t score(bingo_t *bingo, int8_t number)
 	return unmarked_sum * number;
 }
 
-int64_t day4_part1(input_t input)
+int64_t day4_part1(FILE *input)
 {
 	vec_int8_t *numbers = vec_int8_new();
 	vec_bingo_t *bingos = vec_bingo_new();
@@ -191,7 +191,7 @@ found_winner:;
 	return result;
 }
 
-int64_t day4_part2(input_t input)
+int64_t day4_part2(FILE *input)
 {
 	vec_int8_t *numbers = vec_int8_new();
 	vec_bingo_t *bingos = vec_bingo_new();

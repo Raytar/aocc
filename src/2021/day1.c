@@ -5,7 +5,7 @@
 #include "solutions.h"
 #include "datastructures.h"
 
-int64_t day1_part1(input_t input)
+int64_t day1_part1(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
@@ -13,7 +13,7 @@ int64_t day1_part1(input_t input)
 	int64_t num_increased = 0;
 	int64_t prev_value = -1;
 
-	while (input_getline(&line, &buf_len, &input) != -1)
+	while (getline(&line, &buf_len, input) != -1)
 	{
 		int64_t num;
 		if (!sscanf(line, "%" SCNi64, &num))
@@ -31,7 +31,7 @@ int64_t day1_part1(input_t input)
 	return num_increased;
 }
 
-int64_t day1_part2(input_t input)
+int64_t day1_part2(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
@@ -40,7 +40,7 @@ int64_t day1_part2(input_t input)
 	int64_t num_increased = 0;
 	int64_t prev_value = -1;
 
-	while (input_getline(&line, &buf_len, &input) != -1)
+	while (getline(&line, &buf_len, input) != -1)
 	{
 		int64_t num;
 		if (!sscanf(line, "%" SCNi64, &num))

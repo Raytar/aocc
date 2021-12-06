@@ -1,13 +1,15 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <stdio.h>
 #include <stdint.h>
 #include <stdnoreturn.h>
-
-#include "input.h"
+#include <string.h>
 
 // function pointer type for AoC solutions
-typedef int64_t (*solution_t)(input_t);
+typedef int64_t (*solution_t)(FILE *);
+
+#define fmemopen_str(str, mode) fmemopen((void *)str, strlen(str), mode)
 
 #define panic(message) aoc_panic(__FILE__, __LINE__, message)
 
