@@ -34,20 +34,21 @@ size_t queue_unsafe_len(queue_unsafe_t *queue);
 
 #define QUEUE_DECLARE_TYPE(TYPE) QUEUE_DECLARE_TYPE_NAME(TYPE, TYPE)
 
-#define QUEUE_DECLARE_TYPE_NAME(TYPE, NAME)                          \
-	typedef struct queue_##NAME##_t                                  \
-	{                                                                \
-		int head;                                                    \
-		int tail;                                                    \
-		int capacity;                                                \
-		size_t item_size;                                            \
-		TYPE *data;                                                  \
-	} queue_##NAME##_t;                                              \
-	queue_##NAME##_t *queue_##NAME##_new(int capacity);              \
-	bool queue_##NAME##_enqueue(queue_##NAME##_t *queue, TYPE item); \
-	TYPE queue_##NAME##_dequeue(queue_##NAME##_t *queue);            \
-	TYPE queue_##NAME##_get(queue_##NAME##_t *queue, int pos);       \
-	size_t queue_##NAME##_len(queue_##NAME##_t *queue);              \
+#define QUEUE_DECLARE_TYPE_NAME(TYPE, NAME)                                \
+	typedef struct queue_##NAME##_t                                        \
+	{                                                                      \
+		int head;                                                          \
+		int tail;                                                          \
+		int capacity;                                                      \
+		size_t item_size;                                                  \
+		TYPE *data;                                                        \
+	} queue_##NAME##_t;                                                    \
+	queue_##NAME##_t *queue_##NAME##_new(int capacity);                    \
+	bool queue_##NAME##_enqueue(queue_##NAME##_t *queue, TYPE item);       \
+	TYPE queue_##NAME##_dequeue(queue_##NAME##_t *queue);                  \
+	TYPE queue_##NAME##_get(queue_##NAME##_t *queue, int pos);             \
+	TYPE queue_##NAME##_set(queue_##NAME##_t *queue, int pos, TYPE value); \
+	size_t queue_##NAME##_len(queue_##NAME##_t *queue);                    \
 	void queue_##NAME##_free(queue_##NAME##_t *queue);
 
 #define QUEUE_IMPL_TYPE(TYPE) QUEUE_IMPL_TYPE_NAME(TYPE, TYPE)
@@ -74,6 +75,13 @@ size_t queue_unsafe_len(queue_unsafe_t *queue);
 	{                                                                        \
 		int index = queue_unsafe_get((queue_unsafe_t *)queue, pos);          \
 		return queue->data[index];                                           \
+	}                                                                        \
+	TYPE queue_##NAME##_set(queue_##NAME##_t *queue, int pos, TYPE value)    \
+	{                                                                        \
+		int index = queue_unsafe_get((queue_unsafe_t *)queue, pos);          \
+		TYPE old = queue->data[index];                                       \
+		queue->data[index] = value;                                          \
+		return old;                                                          \
 	}                                                                        \
 	size_t queue_##NAME##_len(queue_##NAME##_t *queue)                       \
 	{                                                                        \
