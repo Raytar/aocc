@@ -27,11 +27,12 @@ int64_t day6(FILE *input, int days)
 		token = strtok(NULL, ",");
 	}
 
+	// create queue filled with zeros
 	queue_int64_t *queue = queue_int64_new(9);
-
 	while (queue_int64_len(queue) < 9)
 		queue_int64_enqueue(queue, 0);
 
+	// increment the queue entries based on the input numbers
 	for (size_t i = 0; i < vec_uint8_size(starting_fishes); i++)
 	{
 		uint8_t days = vec_uint8_get(starting_fishes, i);
@@ -41,10 +42,10 @@ int64_t day6(FILE *input, int days)
 
 	for (int i = 0; i < days; i++)
 	{
-		int64_t num_fishes = queue_int64_dequeue(queue);
+		int64_t num_fishes = queue_int64_dequeue(queue); // get the number of fishes with counter 0
 		int64_t n = queue_int64_get(queue, 6);
-		queue_int64_set(queue, 6, n + num_fishes); // increase the number of fishes with 7 days left
-		queue_int64_enqueue(queue, num_fishes);	   // the new fishes with 8 days left
+		queue_int64_set(queue, 6, n + num_fishes); // increase the number of fishes with counter 6
+		queue_int64_enqueue(queue, num_fishes);	   // add the new fishes with counter 8
 	}
 
 	int64_t total = 0;
