@@ -107,9 +107,6 @@ size_t hash_str(const char *str);
 			hashmap_##NAME##_rehash(map);                                                       \
 		/* Need to find an entry that is either AVAILABLE or UNUSED */                          \
 		/* or we could replace an ASSIGNED entry with a matching key. */                        \
-		/* In the latter case, the old key and old value will be written */                     \
-		/* to the respective pointer arguments if they are not NULL. */                         \
-		/* This is done so that the old key and old value may be freed. */                      \
 		int index = HASH(key) % map->capacity;                                                  \
 		hashmap_##NAME##_entry_t *entry;                                                        \
 		for (int i = 0; i < map->capacity; i++)                                                 \
