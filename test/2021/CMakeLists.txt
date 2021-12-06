@@ -13,3 +13,7 @@ add_test(day3_test day3_test)
 add_executable(day4_test day4_test.c)
 target_link_libraries(day4_test unity 2021)
 add_test(day4_test day4_test)
+
+add_executable(day5_test day5_test.c)
+target_link_libraries(day5_test unity 2021)
+add_test(day5_test day5_test)

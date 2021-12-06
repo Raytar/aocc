@@ -16,4 +16,7 @@ int64_t day3_part2(FILE *input);
 int64_t day4_part1(FILE *input);
 int64_t day4_part2(FILE *input);
 
+int64_t day5_part1(FILE *input);
+int64_t day5_part2(FILE *input);
+
 #endif // SOLUTIONS_H
