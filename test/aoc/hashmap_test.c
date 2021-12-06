@@ -57,11 +57,22 @@ void test_hashmap_remove()
 	TEST_ASSERT_FALSE(hashmap_str_str_get(&m, "1", &value));
 }
 
+void test_hashmap_replace()
+{
+	hashmap_str_str_insert(&m, "1", "1");
+	hashmap_str_str_insert(&m, "1", "2");
+	TEST_ASSERT_EQUAL_size_t(1, hashmap_str_str_size(&m));
+	char *value;
+	TEST_ASSERT(hashmap_str_str_get(&m, "1", &value));
+	TEST_ASSERT_EQUAL_STRING("2", value);
+}
+
 int main()
 {
 	UNITY_BEGIN();
 	RUN_TEST(test_hashmap_insert_and_get);
 	RUN_TEST(test_hashmap_rehash);
 	RUN_TEST(test_hashmap_remove);
+	RUN_TEST(test_hashmap_replace);
 	return UNITY_END();
 }
