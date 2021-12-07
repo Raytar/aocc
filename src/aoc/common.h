@@ -19,4 +19,12 @@ noreturn void aoc_panic(const char *file, int line, const char *message);
 
 noreturn void aoc_panicf(const char *file, int line, const char *format, ...);
 
+#define DECLARE_INT_CMP(TYPE, NAME) int cmp_##NAME(const TYPE *a, const TYPE *b);
+
+#define IMPL_INT_CMP(TYPE, NAME)                 \
+	int cmp_##NAME(const TYPE *a, const TYPE *b) \
+	{                                            \
+		return *a - *b;                          \
+	}
+
 #endif // COMMON_H

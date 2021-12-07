@@ -2,8 +2,6 @@
 #include <string.h>
 #include <inttypes.h>
 
-#include <aoc/queue.h>
-
 #include "solutions.h"
 #include "datastructures.h"
 
