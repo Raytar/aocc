@@ -9,6 +9,8 @@
 // function pointer type for AoC solutions
 typedef int64_t (*solution_t)(FILE *);
 
+typedef int (*cmp_fn)(const void *, const void *);
+
 #define fmemopen_str(str, mode) fmemopen((void *)str, strlen(str), mode)
 
 #define panic(message) aoc_panic(__FILE__, __LINE__, message)
