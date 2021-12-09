@@ -39,21 +39,18 @@ static void find_low_points(vec_uint8_t *heightmap, vec_int_t *low_points, int r
 
 		// check top
 		if (pos / cols > 0 && height >= vec_uint8_get(heightmap, pos - cols))
-			goto not_low_point;
+			continue;
 		// check bottom
 		if (pos / cols < rows - 1 && height >= vec_uint8_get(heightmap, pos + cols))
-			goto not_low_point;
+			continue;
 		// check left
 		if (pos % cols > 0 && height >= vec_uint8_get(heightmap, pos - 1))
-			goto not_low_point;
+			continue;
 		// check right
 		if (pos % cols < cols - 1 && height >= vec_uint8_get(heightmap, pos + 1))
-			goto not_low_point;
+			continue;
 
 		vec_int_push_back(low_points, pos);
-
-	not_low_point:;
-		// jump here if the point is not a low point
 	}
 }
 
