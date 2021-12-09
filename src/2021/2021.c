@@ -20,6 +20,8 @@ solution_t solutions[] = {
 	day7_part2,
 	day8_part1,
 	day8_part2,
+	day9_part1,
+	day9_part2,
 };
 
 void aoc_2021_run_solution(int day, int part, FILE *input)

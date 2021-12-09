@@ -12,6 +12,7 @@ add_library(2021 STATIC
 	day6.c
 	day7.c
 	day8.c
+	day9.c
 )
 
 target_link_libraries(2021 aoc)
