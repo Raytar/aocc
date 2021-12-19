@@ -93,7 +93,7 @@ int vec_unsafe_push_back(vec_unsafe_t *v)
 	return index;
 }
 
-void vec_unsafe_pop_back(vec_unsafe_t *v)
+void vec_unsafe_pop_front(vec_unsafe_t *v)
 {
 	if (v->size < 1)
 	{

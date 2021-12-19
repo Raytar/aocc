@@ -2,10 +2,10 @@
 #define DATASTRUCTURES_H
 
 #include <stdint.h>
-#include <aoc/queue.h>
+#include <aoc/ring.h>
 #include <aoc/vec.h>
 
-QUEUE_DECLARE_TYPE_NAME(int64_t, int64)
+RING_DECLARE_TYPE_NAME(int64_t, int64)
 
 VEC_DECLARE_TYPE_NAME(uint8_t, uint8)
 VEC_DECLARE_TYPE_NAME(uint16_t, uint16)

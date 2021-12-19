@@ -126,7 +126,7 @@ int64_t day9_part2(FILE *input)
 
 	int64_t answer = 1;
 	for (int i = 0; i < 3; i++)
-		answer *= vec_int_pop_back(basin_sizes);
+		answer *= vec_int_pop_front(basin_sizes);
 
 	vec_uint8_free(heightmap);
 	vec_int_free(low_points);

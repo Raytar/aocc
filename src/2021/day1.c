@@ -36,7 +36,7 @@ int64_t day1_part2(FILE *input)
 	char *line = NULL;
 	size_t buf_len = 0;
 
-	queue_int64_t *history = queue_int64_new(3);
+	ring_int64_t *history = ring_int64_new(3);
 	int64_t num_increased = 0;
 	int64_t prev_value = -1;
 
@@ -46,18 +46,18 @@ int64_t day1_part2(FILE *input)
 		if (!sscanf(line, "%" SCNi64, &num))
 			panic("expected a number");
 
-		// enqueue the new item
-		queue_int64_enqueue(history, num);
+		// enring the new item
+		ring_int64_push_back(history, num);
 
 		int64_t sum = 0;
-		if (queue_int64_len(history) == 3)
+		if (ring_int64_len(history) == 3)
 		{
-			sum += queue_int64_get(history, 0);
-			sum += queue_int64_get(history, 1);
-			sum += queue_int64_get(history, 2);
+			sum += ring_int64_get(history, 0);
+			sum += ring_int64_get(history, 1);
+			sum += ring_int64_get(history, 2);
 
 			// remove oldest item
-			queue_int64_dequeue(history);
+			ring_int64_pop_front(history);
 		}
 
 		if (prev_value > 0 && sum > prev_value)
@@ -66,7 +66,7 @@ int64_t day1_part2(FILE *input)
 		prev_value = sum;
 	}
 
-	queue_int64_free(history);
+	ring_int64_free(history);
 
 	if (line != NULL)
 		free(line);

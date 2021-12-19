@@ -21,7 +21,7 @@ void test_vec_push_and_pop()
 {
 	int val = 1;
 	vec_int_push_back(v, val);
-	TEST_ASSERT_EQUAL_INT(val, vec_int_pop_back(v));
+	TEST_ASSERT_EQUAL_INT(val, vec_int_pop_front(v));
 }
 
 void test_vec_insert_front()
@@ -48,8 +48,8 @@ void test_vec_remove()
 
 	vec_int_remove(v, 1);
 
-	TEST_ASSERT_EQUAL_INT(3, vec_int_pop_back(v));
-	TEST_ASSERT_EQUAL_INT(1, vec_int_pop_back(v));
+	TEST_ASSERT_EQUAL_INT(3, vec_int_pop_front(v));
+	TEST_ASSERT_EQUAL_INT(1, vec_int_pop_front(v));
 	TEST_ASSERT_EQUAL_INT(0, vec_int_size(v));
 }
 
@@ -72,9 +72,9 @@ void test_vec_grow()
 
 	vec_int_ensure_capacity(v, 100);
 
-	TEST_ASSERT_EQUAL_INT(3, vec_int_pop_back(v));
-	TEST_ASSERT_EQUAL_INT(2, vec_int_pop_back(v));
-	TEST_ASSERT_EQUAL_INT(1, vec_int_pop_back(v));
+	TEST_ASSERT_EQUAL_INT(3, vec_int_pop_front(v));
+	TEST_ASSERT_EQUAL_INT(2, vec_int_pop_front(v));
+	TEST_ASSERT_EQUAL_INT(1, vec_int_pop_front(v));
 }
 
 int main()

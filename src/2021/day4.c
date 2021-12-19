@@ -142,7 +142,7 @@ static void free_bingos(vec_bingo_t *bingos)
 {
 	for (size_t i = 0; i < vec_bingo_size(bingos); i++)
 	{
-		bingo_t bingo = vec_bingo_pop_back(bingos);
+		bingo_t bingo = vec_bingo_pop_front(bingos);
 		hashmap_bingo_lookup_free(&bingo.lookup);
 	}
 	vec_bingo_free(bingos);

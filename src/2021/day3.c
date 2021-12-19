@@ -152,8 +152,8 @@ int64_t day3_part2(FILE *input)
 		panic("expected one number to remain");
 	}
 
-	int64_t oxygen_rating = vec_short_pop_back(oxygen_numbers);
-	int64_t co2_rating = vec_short_pop_back(co2_numbers);
+	int64_t oxygen_rating = vec_short_pop_front(oxygen_numbers);
+	int64_t co2_rating = vec_short_pop_front(co2_numbers);
 
 	vec_bit_free(oxygen_bits);
 	vec_bit_free(co2_bits);

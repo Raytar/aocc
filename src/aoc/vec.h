@@ -35,7 +35,7 @@ void vec_unsafe_clear(vec_unsafe_t *v);
 
 int vec_unsafe_push_back(vec_unsafe_t *v);
 
-void vec_unsafe_pop_back(vec_unsafe_t *v);
+void vec_unsafe_pop_front(vec_unsafe_t *v);
 
 void vec_unsafe_ensure_capacity(vec_unsafe_t *v, int capacity);
 
@@ -64,7 +64,7 @@ vec_unsafe_t *vec_unsafe_clone(vec_unsafe_t *v);
 	void vec_##NAME##_insert(vec_##NAME##_t *vec, int index, TYPE item);  \
 	TYPE vec_##NAME##_remove(vec_##NAME##_t *vec, int index);             \
 	void vec_##NAME##_push_back(vec_##NAME##_t *vec, TYPE item);          \
-	TYPE vec_##NAME##_pop_back(vec_##NAME##_t *vec);                      \
+	TYPE vec_##NAME##_pop_front(vec_##NAME##_t *vec);                     \
 	void vec_##NAME##_ensure_capacity(vec_##NAME##_t *vec, int capacity); \
 	void vec_##NAME##_set_size(vec_##NAME##_t *vec, int size);            \
 	vec_##NAME##_t *vec_##NAME##_clone(vec_##NAME##_t *vec);              \
@@ -124,13 +124,13 @@ vec_unsafe_t *vec_unsafe_clone(vec_unsafe_t *v);
 		int index = vec_unsafe_push_back((vec_unsafe_t *)vec);                            \
 		vec->data[index] = item;                                                          \
 	}                                                                                     \
-	TYPE vec_##NAME##_pop_back(vec_##NAME##_t *vec)                                       \
+	TYPE vec_##NAME##_pop_front(vec_##NAME##_t *vec)                                      \
 	{                                                                                     \
 		int size = vec_unsafe_size((vec_unsafe_t *)vec);                                  \
 		if (size == 0)                                                                    \
 			panic("empty vector");                                                        \
 		TYPE tmp = vec->data[size - 1];                                                   \
-		vec_unsafe_pop_back((vec_unsafe_t *)vec);                                         \
+		vec_unsafe_pop_front((vec_unsafe_t *)vec);                                        \
 		return tmp;                                                                       \
 	}                                                                                     \
 	void vec_##NAME##_ensure_capacity(vec_##NAME##_t *vec, int capacity)                  \
