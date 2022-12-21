@@ -9,7 +9,7 @@
 
 const int POW_10[] = {1, 10, 100, 1000};
 
-int64_t day8_part1(FILE *input)
+int64_t aoc2021_8_1(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
@@ -220,7 +220,7 @@ static int64_t process_entry(char *line)
 	return output;
 }
 
-int64_t day8_part2(FILE *input)
+int64_t aoc2021_8_2(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;

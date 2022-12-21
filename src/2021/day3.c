@@ -78,7 +78,7 @@ vec_bit_t *count_bits(vec_short_t *numbers, size_t num_bits)
 	return bits;
 }
 
-int64_t day3_part1(FILE *input)
+int64_t aoc2021_3_1(FILE *input)
 {
 	size_t num_bits = 0;
 	vec_short_t *numbers = read_input(input, &num_bits);
@@ -115,7 +115,7 @@ void filter_numbers(vec_short_t *numbers, int bit, bool value)
 	}
 }
 
-int64_t day3_part2(FILE *input)
+int64_t aoc2021_3_2(FILE *input)
 {
 	size_t num_bits = 0;
 	vec_short_t *oxygen_numbers = read_input(input, &num_bits);

@@ -61,12 +61,12 @@ int64_t day6(FILE *input, int days)
 	return total;
 }
 
-int64_t day6_part1(FILE *input)
+int64_t aoc2021_6_1(FILE *input)
 {
 	return day6(input, 80);
 }
 
-int64_t day6_part2(FILE *input)
+int64_t aoc2021_6_2(FILE *input)
 {
 	return day6(input, 256);
 }

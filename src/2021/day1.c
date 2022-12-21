@@ -5,7 +5,7 @@
 #include "solutions.h"
 #include "datastructures.h"
 
-int64_t day1_part1(FILE *input)
+int64_t aoc2021_1_1(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;
@@ -31,7 +31,7 @@ int64_t day1_part1(FILE *input)
 	return num_increased;
 }
 
-int64_t day1_part2(FILE *input)
+int64_t aoc2021_1_2(FILE *input)
 {
 	char *line = NULL;
 	size_t buf_len = 0;

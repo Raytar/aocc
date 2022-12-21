@@ -35,12 +35,12 @@ void tearDown()
 
 void test_part1()
 {
-	TEST_ASSERT_EQUAL_INT64(7, day1_part1(input));
+	TEST_ASSERT_EQUAL_INT64(7, aoc2021_1_1(input));
 }
 
 void test_part2()
 {
-	TEST_ASSERT_EQUAL_INT64(5, day1_part2(input));
+	TEST_ASSERT_EQUAL_INT64(5, aoc2021_1_2(input));
 }
 
 int main()

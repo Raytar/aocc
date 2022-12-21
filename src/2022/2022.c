@@ -1,30 +1,13 @@
 #include <inttypes.h>
 
-#include "2021.h"
+#include "2022.h"
 #include "solutions.h"
 
 static solution_t solutions[] = {
-	aoc2021_1_1,
-	aoc2021_1_2,
-	aoc2021_2_1,
-	aoc2021_2_2,
-	aoc2021_3_1,
-	aoc2021_3_2,
-	aoc2021_4_1,
-	aoc2021_4_2,
-	aoc2021_5_1,
-	aoc2021_5_2,
-	aoc2021_6_1,
-	aoc2021_6_2,
-	aoc2021_7_1,
-	aoc2021_7_2,
-	aoc2021_8_1,
-	aoc2021_8_2,
-	aoc2021_9_1,
-	aoc2021_9_2,
+	aoc2022_1_1,
 };
 
-void aoc_2021_run_solution(int day, int part, FILE *input)
+void aoc_2022_run_solution(int day, int part, FILE *input)
 {
 	int index = (day - 1) * 2 + (part - 1);
 	if (index >= (int)(sizeof(solutions) / sizeof(solution_t)))

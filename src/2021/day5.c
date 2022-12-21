@@ -95,12 +95,12 @@ int64_t day5(FILE *input, bool diagonal)
 	return at_least_two_overlap;
 }
 
-int64_t day5_part1(FILE *input)
+int64_t aoc2021_5_1(FILE *input)
 {
 	return day5(input, false);
 }
 
-int64_t day5_part2(FILE *input)
+int64_t aoc2021_5_2(FILE *input)
 {
 	return day5(input, true);
 }

@@ -54,7 +54,7 @@ static void find_low_points(vec_uint8_t *heightmap, vec_int_t *low_points, int r
 	}
 }
 
-int64_t day9_part1(FILE *input)
+int64_t aoc2021_9_1(FILE *input)
 {
 	vec_uint8_t *heightmap = vec_uint8_new();
 	vec_int_t *low_points = vec_int_new();
@@ -104,7 +104,7 @@ static int basin_size(vec_uint8_t *heightmap, int rows, int cols, int pos)
 	return size;
 }
 
-int64_t day9_part2(FILE *input)
+int64_t aoc2021_9_2(FILE *input)
 {
 	vec_uint8_t *heightmap = vec_uint8_new();
 	vec_int_t *low_points = vec_int_new();

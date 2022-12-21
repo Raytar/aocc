@@ -18,7 +18,7 @@ void parse_line(char *line, char **command_ptr, unsigned *value_ptr)
 		panic("could not read value");
 }
 
-int64_t day2_part1(FILE *input)
+int64_t aoc2021_2_1(FILE *input)
 {
 	int64_t horizontal_pos = 0;
 	int64_t depth = 0;
@@ -49,7 +49,7 @@ int64_t day2_part1(FILE *input)
 	return horizontal_pos * depth;
 }
 
-int64_t day2_part2(FILE *input)
+int64_t aoc2021_2_2(FILE *input)
 {
 	int64_t horizontal_pos = 0;
 	int64_t depth = 0;

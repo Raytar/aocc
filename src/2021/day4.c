@@ -161,7 +161,7 @@ static uint64_t score(bingo_t *bingo, int8_t number)
 	return unmarked_sum * number;
 }
 
-int64_t day4_part1(FILE *input)
+int64_t aoc2021_4_1(FILE *input)
 {
 	vec_int8_t *numbers = vec_int8_new();
 	vec_bingo_t *bingos = vec_bingo_new();
@@ -191,7 +191,7 @@ found_winner:;
 	return result;
 }
 
-int64_t day4_part2(FILE *input)
+int64_t aoc2021_4_2(FILE *input)
 {
 	vec_int8_t *numbers = vec_int8_new();
 	vec_bingo_t *bingos = vec_bingo_new();

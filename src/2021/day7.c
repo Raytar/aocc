@@ -93,12 +93,12 @@ int64_t day7(FILE *input, cost_fn compute_cost)
 	return lowest_cost;
 }
 
-int64_t day7_part1(FILE *input)
+int64_t aoc2021_7_1(FILE *input)
 {
 	return day7(input, &compute_cost_part1);
 }
 
-int64_t day7_part2(FILE *input)
+int64_t aoc2021_7_2(FILE *input)
 {
 	return day7(input, &compute_cost_part2);
 }

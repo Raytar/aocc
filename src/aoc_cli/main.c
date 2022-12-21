@@ -4,6 +4,7 @@
 #include <sys/time.h>
 
 #include <2021/2021.h>
+#include <2022/2022.h>
 
 int main(int argc, char *argv[])
 {
@@ -28,6 +29,11 @@ int main(int argc, char *argv[])
 	if (strcmp(argv[1], "2021") == 0)
 	{
 		aoc_2021_run_solution(day, part, fp);
+	}
+
+	if (strcmp(argv[1], "2022") == 0)
+	{
+		aoc_2022_run_solution(day, part, fp);
 	}
 
 	gettimeofday(&tval_after, NULL);
